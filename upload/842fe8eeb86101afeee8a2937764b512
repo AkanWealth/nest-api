@@ -1,0 +1,15 @@
+SELECT
+
+	"officialStatus",
+	SUM ("loanAmount"::FLOAT) as "loanAmount",
+	COUNT("officialStatus")
+FROM
+	"Requests" AS r
+	LEFT JOIN "Staffs" AS s ON s. "id" = r. "staffId"
+WHERE
+	r. "createdAt" > '2022-02-19'
+	AND
+	r. "createdAt" < '2022-02-26'
+GROUP BY
+	
+	r. "officialStatus";
